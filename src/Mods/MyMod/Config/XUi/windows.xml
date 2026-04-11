@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  windows.xml - UI window additions and modifications
+  Vanilla reference: server/Data/Config/XUi/windows.xml
+
+  Add a new window:
+    <append xpath="/windows">
+      <window name="myCustomWindow" depth="10">
+        <panel name="main" style="empty">
+          <rect width="300" height="200" depth="1" anchor="MiddleCenter">
+            <sprite name="background" type="sliced" sprite="ui_game_header_fill" color="[darkGrey]"/>
+            <label name="title" text="My Window" font_size="24" justify="center" pos="0,0"/>
+          </rect>
+        </panel>
+      </window>
+    </append>
+
+  Modify a property on an existing window element:
+    <set xpath="/windows/window[@name='windowBackpack']/@depth">5</set>
+
+  Remove an element from an existing window:
+    <remove xpath="/windows/window[@name='windowLocation']"/>
+
+  Append a child element to an existing window:
+    <append xpath="/windows/window[@name='windowCompass']">
+      <label name="myLabel" text="Hello" font_size="20" pos="0,-10"/>
+    </append>
+-->
+<windows>
+
+</windows>

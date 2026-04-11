@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  quests.xml - Quest definitions
+  Vanilla reference: server/Data/Config/quests.xml
+
+  Add a new quest:
+    <append xpath="/quests">
+      <quest id="myQuest01">
+        <property name="name"        value="My First Quest"/>
+        <property name="subtitle"    value="A starter task"/>
+        <property name="description" value="Do something useful."/>
+        <property name="category"    value="quest_category_tier1"/>
+        <objective type="Fetch" id="foodCanChili" count="5"/>
+        <reward type="Exp"      value="500"/>
+        <reward type="Item"     id="casinoCoin" count="10"/>
+      </quest>
+    </append>
+
+  Modify an existing quest reward:
+    <set xpath="/quests/quest[@id='quest_BasicSurvival01']/reward[@type='Exp']/@value">1000</set>
+-->
+<quests>
+
+</quests>

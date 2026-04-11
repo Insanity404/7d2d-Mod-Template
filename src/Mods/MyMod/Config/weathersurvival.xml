@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  weathersurvival.xml - Temperature, wetness, and weather survival settings
+  Vanilla reference: server/Data/Config/weathersurvival.xml
+
+  Modify comfortable temperature range:
+    <set xpath="/weathersurvival/property[@name='TempRangeComfortableMin']/@value">10</set>
+    <set xpath="/weathersurvival/property[@name='TempRangeComfortableMax']/@value">35</set>
+
+  Modify rain wetness accumulation rate:
+    <set xpath="/weathersurvival/property[@name='WetnessRainRate']/@value">0.5</set>
+
+  Modify freeze damage threshold:
+    <set xpath="/weathersurvival/property[@name='TempFreeze']/@value">-15</set>
+-->
+<weathersurvival>
+
+</weathersurvival>

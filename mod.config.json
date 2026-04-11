@@ -1,0 +1,22 @@
+{
+  "_comment": "7 Days to Die Mod Template - Edit these values for your mod",
+  "modName": "MyMod",
+  "modDisplayName": "My Mod",
+  "modAuthor": "YourName",
+  "modVersion": "0.1.0",
+  "modDescription": "My 7 Days to Die mod description.",
+  "modWebsite": "https://example.com/mymod",
+
+  "server": {
+    "name": "7D2D Dev Server",
+    "password": "letmein",
+    "port": 26900,
+    "maxPlayers": 4,
+    "gameWorld": "Navezgane",
+    "gameDifficulty": 2,
+    "dayNightLength": 60,
+    "bloodMoonFrequency": 7,
+    "dropOnDeath": 1,
+    "dropOnQuit": 0
+  }
+}

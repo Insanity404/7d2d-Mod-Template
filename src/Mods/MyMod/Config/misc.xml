@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  misc.xml - Miscellaneous game settings (decay, crafting, physics, etc.)
+  Vanilla reference: server/Data/Config/misc.xml
+
+  Modify a miscellaneous value:
+    <set xpath="/miscellaneous/property[@name='ZombieFragility']/@value">0.5</set>
+
+  Common properties you might want to tweak:
+    - ZombieFragility       (dismemberment chance multiplier)
+    - XPMultiplier          (global XP gain modifier)
+    - AirDropFrequency      (hours between airdrops)
+    - LandProtectionSize    (land claim block radius)
+-->
+<miscellaneous>
+
+</miscellaneous>

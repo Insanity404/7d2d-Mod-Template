@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  spawning.xml - Sleeper volume and world spawn configuration
+  Vanilla reference: server/Data/Config/spawning.xml
+
+  Add a new spawn group for world spawning:
+    <append xpath="/spawning">
+      <spawngroup name="MyModWorldSpawn">
+        <spawn entitygroup="MyModForestZombies" time="Night" maxalive="4"
+               respawndelay="24" entitycount="2"/>
+      </spawngroup>
+    </append>
+
+  Modify respawn delay for an existing spawn group:
+    <set xpath="/spawning/spawngroup[@name='ZombiesAll']/spawn[@entitygroup='ZombiesForestDay']/@respawndelay">48</set>
+
+  Add an entity group to an existing spawn group:
+    <append xpath="/spawning/spawngroup[@name='ZombiesAll']">
+      <spawn entitygroup="myCustomGroup" time="Night" maxalive="2" respawndelay="24" entitycount="1"/>
+    </append>
+-->
+<spawning>
+
+</spawning>

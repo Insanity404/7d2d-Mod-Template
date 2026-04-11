@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  entityclasses.xml - Entity class definitions (zombie/animal stats and behavior)
+  Vanilla reference: server/Data/Config/entityclasses.xml
+
+  Add a new entity:
+    <append xpath="/entityclasses">
+      <entity_class name="myCustomZombie">
+        <property name="Extends"        value="zombieArlene"/>
+        <property name="DisplayName"    value="My Custom Zombie"/>
+        <property name="MaxHealth"      value="200"/>
+        <property name="MoveSpeed"      value="0.8"/>
+        <property name="MoveSpeedFeral" value="1.4"/>
+      </entity_class>
+    </append>
+
+  Modify health on an existing entity:
+    <set xpath="/entityclasses/entity_class[@name='zombieArlene']/property[@name='MaxHealth']/@value">150</set>
+
+  Change entity loot group:
+    <set xpath="/entityclasses/entity_class[@name='zombieArlene']/property[@name='LootListAlive']/@value">myLootGroup</set>
+-->
+<entityclasses>
+
+</entityclasses>

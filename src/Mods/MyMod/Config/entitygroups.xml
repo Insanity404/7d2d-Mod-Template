@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  entitygroups.xml - Zombie and animal spawn group definitions
+  Vanilla reference: server/Data/Config/entitygroups.xml
+
+  Add a new spawn group:
+    <append xpath="/entitygroups">
+      <entitygroup name="MyModForestZombies">
+        <entity name="zombieArlene" prob="0.4"/>
+        <entity name="zombieMoe"    prob="0.3"/>
+        <entity name="zombieSteve"  prob="0.3"/>
+      </entitygroup>
+    </append>
+
+  Add an entity to an existing group:
+    <append xpath="/entitygroups/entitygroup[@name='ZombiesForestDay']">
+      <entity name="zombieMutated" prob="0.1"/>
+    </append>
+
+  Change spawn probability:
+    <set xpath="/entitygroups/entitygroup[@name='ZombiesForestDay']/entity[@name='zombieArlene']/@prob">0.05</set>
+-->
+<entitygroups>
+
+</entitygroups>

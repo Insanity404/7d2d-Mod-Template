@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  buffs.xml - Buff and debuff definitions
+  Vanilla reference: server/Data/Config/buffs.xml
+
+  Add a new buff:
+    <append xpath="/buffs">
+      <buff name="myBuff" duration="60" tooltip_cat="Positive">
+        <stack_rule type="extend"/>
+        <effect_group name="My Buff Effects">
+          <triggered_effect trigger="onSelfBuffStart"  action="ModifyCVar" cvar="myVar" operation="add" value="10"/>
+          <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="myVar" operation="add" value="-10"/>
+        </effect_group>
+      </buff>
+    </append>
+
+  Modify an existing buff duration:
+    <set xpath="/buffs/buff[@name='drownDmgBuff']/@duration">30</set>
+
+  Add an effect to an existing buff:
+    <append xpath="/buffs/buff[@name='wellFedBonus']/effect_group">
+      <passive_effect name="StaminaRegen" operation="perc_add" value="0.1"/>
+    </append>
+-->
+<buffs>
+
+</buffs>

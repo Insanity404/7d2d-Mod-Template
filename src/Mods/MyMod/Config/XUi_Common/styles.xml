@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  styles.xml - UI style additions and modifications
+  Vanilla reference: server/Data/Config/XUi_Common/styles.xml
+
+  Add a new button style:
+    <append xpath="/styles">
+      <style type="button" name="myCustomButton">
+        <style_entry name="atlas" value="UIAtlas"/>
+        <style_entry name="sprite" value="[default_sprite]"/>
+        <style_entry name="defaultcolor" value="[iconColor]"/>
+        <style_entry name="hovercolor" value="[hoverColor]"/>
+        <style_entry name="hoverscale" value="1.25"/>
+      </style>
+    </append>
+
+  Add a value to an existing global style entry:
+    <append xpath="/styles/global">
+      <style_entry name="myColor" value="255,128,0"/>
+    </append>
+
+  Modify an existing style entry value:
+    <set xpath="/styles/style[@name='icon32px']/style_entry[@name='width']/@value">48</set>
+-->
+<styles>
+
+</styles>

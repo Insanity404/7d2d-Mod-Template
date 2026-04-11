@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <Name        value="MyMod"/>
+    <DisplayName value="My Mod"/>
+    <Description value="My 7 Days to Die mod description."/>
+    <Author      value="YourName"/>
+    <Version     value="0.1.0"/>
+    <Website     value=""/>
+</xml>

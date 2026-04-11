@@ -1,0 +1,40 @@
+# Dev server - rebuild with: .\scripts\setup-server.ps1
+/server/
+
+# Runtime data (save games, user data, logs)
+/data/
+
+# Distribution packages
+/releases/
+
+# Personal notes
+/notes/
+/scratch/
+
+# Visual Studio - keep launch.vs.json committed for shared launch config
+.vs/*
+!.vs/launch.vs.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET build output
+/bin/
+/obj/
+
+# VS Code - keep tasks/launch/extensions committed, ignore machine-specific settings
+.vscode/settings.json
+.vscode/*.code-workspace
+
+# Log files
+*.log
+*.bak
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+**/.DS_Store

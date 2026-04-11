@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  biomes.xml - Biome settings (spawn rates, entity groups per biome/time)
+  Vanilla reference: server/Data/Config/biomes.xml
+
+  Add a spawn group to a biome:
+    <append xpath="/biomes/biome[@name='pine_forest']/spawn">
+      <entity entitygroup="MyModForestZombies" maxcount="5" maxalive="3" probability="0.1"
+              daytime="Night" spawndelay="5" spawncount="2"/>
+    </append>
+
+  Modify spawn probability in existing entry:
+    <set xpath="/biomes/biome[@name='pine_forest']/spawn/entity[@entitygroup='ZombiesForestDay']/@probability">0.2</set>
+
+  Change biome ambient temperature:
+    <set xpath="/biomes/biome[@name='wasteland']/weather[@name='default']/@temperatureMin">45</set>
+-->
+<biomes>
+
+</biomes>

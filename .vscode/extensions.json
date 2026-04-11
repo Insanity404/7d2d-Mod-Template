@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "ms-vscode.powershell",
+    "redhat.vscode-xml",
+    "mhutchie.git-graph",
+    "eamodio.gitlens"
+  ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  vehicles.xml - Vehicle stat modifications
+  Vanilla reference: server/Data/Config/vehicles.xml
+
+  Modify vehicle max speed:
+    <set xpath="/vehicles/vehicle[@name='vehicleMinibike']/property[@name='MaxSpeed']/@value">20</set>
+
+  Modify vehicle storage size:
+    <set xpath="/vehicles/vehicle[@name='vehicleJeep']/property[@name='StorageSize']/@value">45</set>
+
+  Add a property to a vehicle:
+    <append xpath="/vehicles/vehicle[@name='vehicleMinibike']">
+      <property name="FuelSource" value="myFuelItem"/>
+    </append>
+-->
+<vehicles>
+
+</vehicles>

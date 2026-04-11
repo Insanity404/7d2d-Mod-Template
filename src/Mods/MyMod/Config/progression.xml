@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  progression.xml - Attributes, skills, and perk definitions
+  Vanilla reference: server/Data/Config/progression.xml
+
+  Add a new perk under an existing skill:
+    <append xpath="/progression/skills/skill[@name='skillArchery']">
+      <perk name="myPerk" max_level="5" display_name="My Perk" icon="ui_game_symbol_perk_agility">
+        <level_requirements>
+          <requirement name="ProgressionLevel" progression_name="skillArchery" value="1,2,3,4,5"/>
+        </level_requirements>
+        <effect_group name="My Perk Effects">
+          <passive_effect name="RangedDamage" operation="perc_add" level="1,2,3,4,5" value=".05,.1,.15,.2,.25"/>
+        </effect_group>
+      </perk>
+    </append>
+
+  Modify XP cost for a skill level:
+    <set xpath="/progression/skills/skill[@name='skillArchery']/level[@level='1']/@exp_to_level">200</set>
+
+  Modify an attribute's max level:
+    <set xpath="/progression/attributes/attribute[@name='attPerception']/@max_level">15</set>
+-->
+<progression>
+
+</progression>

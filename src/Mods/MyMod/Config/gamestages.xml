@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  gamestages.xml - Game stage spawn configuration (horde scaling by player level/days)
+  Vanilla reference: server/Data/Config/gamestages.xml
+
+  Add a new spawn set for a game stage range:
+    <append xpath="/gamestages">
+      <spawner name="MyModHorde">
+        <gamestage stage="1">
+          <spawn group="ZombiesForestDay" num="2" numferal="0" numradiated="0"/>
+        </gamestage>
+        <gamestage stage="50">
+          <spawn group="ZombiesForestDay" num="5" numferal="1" numradiated="0"/>
+        </gamestage>
+      </spawner>
+    </append>
+
+  Modify zombie count for an existing spawner at a stage:
+    <set xpath="/gamestages/spawner[@name='ZombiesDuringTheDay']/gamestage[@stage='1']/spawn/@num">3</set>
+-->
+<gamestages>
+
+</gamestages>

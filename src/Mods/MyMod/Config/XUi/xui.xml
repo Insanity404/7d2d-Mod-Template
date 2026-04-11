@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  xui.xml - UI ruleset and window group modifications
+  Vanilla reference: server/Data/Config/XUi/xui.xml
+
+  Add a new window to an existing window group:
+    <append xpath="/xui/ruleset[@name='default']/window_group[@name='backpack']">
+      <window name="myCustomPanel" />
+    </append>
+
+  Change the scale of the default ruleset:
+    <set xpath="/xui/ruleset[@name='default']/@scale">1.0</set>
+
+  Add a new window group:
+    <append xpath="/xui/ruleset[@name='default']">
+      <window_group name="myCustomMenu" controller="XUiC_MyController">
+        <window name="myCustomWindow" />
+      </window_group>
+    </append>
+-->
+<xui>
+
+</xui>

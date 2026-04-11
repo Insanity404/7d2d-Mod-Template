@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  recipes.xml - Crafting recipe additions and modifications
+  Vanilla reference: server/Data/Config/recipes.xml
+
+  Add a new recipe:
+    <append xpath="/recipes">
+      <recipe name="myCustomSword" count="1" craft_time="60" craft_area="workbench">
+        <ingredient name="resourceIronIngot" count="10"/>
+        <ingredient name="resourceWood"      count="5"/>
+      </recipe>
+    </append>
+
+  Modify ingredient count on existing recipe:
+    <set xpath="/recipes/recipe[@name='gunHandgunT1Pistol']/ingredient[@name='resourceIronIngot']/@count">20</set>
+
+  Remove a recipe entirely:
+    <remove xpath="/recipes/recipe[@name='someRecipeName']"/>
+-->
+<recipes>
+
+</recipes>

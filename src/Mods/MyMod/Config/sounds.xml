@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sounds.xml - Sound event definitions
+  Vanilla reference: server/Data/Config/sounds.xml
+
+  Add a new sound event pointing to an existing audio clip:
+    <append xpath="/SoundDataNode">
+      <AudioSource name="myMod/mySound">
+        <AudioClip ClipPath="myMod/Sounds/mySound" Volume="1.0" Pitch="1.0"
+                   MaxVoices="2" Priority="128" Loop="false"/>
+      </AudioSource>
+    </append>
+
+  Replace an existing sound:
+    <remove xpath="/SoundDataNode/AudioSource[@name='game/attack/zombie/attack1']"/>
+    <append xpath="/SoundDataNode">
+      <AudioSource name="game/attack/zombie/attack1">
+        <AudioClip ClipPath="myMod/Sounds/myAttack" Volume="1.0" Pitch="1.0"
+                   MaxVoices="4" Priority="128" Loop="false"/>
+      </AudioSource>
+    </append>
+
+  Note: Audio clip files go in your mod's Resources/ folder.
+-->
+<SoundDataNode>
+
+</SoundDataNode>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  items.xml - Item additions and modifications
+  Vanilla reference: server/Data/Config/items.xml
+
+  Add a new item:
+    <append xpath="/items">
+      <item name="myCustomSword">
+        <property name="Extends"      value="meleeToolPickaxeIron"/>
+        <property name="DisplayName"  value="My Custom Sword"/>
+        <property name="EntityDamage" value="50"/>
+      </item>
+    </append>
+
+  Modify an existing item property:
+    <set xpath="/items/item[@name='meleeToolPickaxeIron']/property[@name='EntityDamage']/@value">25</set>
+
+  Add a property to an existing item:
+    <append xpath="/items/item[@name='meleeToolPickaxeIron']">
+      <property name="Tags" value="myTag"/>
+    </append>
+-->
+<items>
+
+</items>

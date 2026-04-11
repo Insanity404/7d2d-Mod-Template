@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Deploy + Launch Dev Server",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": "${workspaceFolder}/scripts/start-server.ps1",
+      "args": ["-Build"],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Start Server Only (no build)",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": "${workspaceFolder}/scripts/start-server.ps1",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

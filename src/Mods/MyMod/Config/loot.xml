@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  loot.xml - Loot container and loot group definitions
+  Vanilla reference: server/Data/Config/loot.xml
+
+  Add a new loot group:
+    <append xpath="/lootcontainers">
+      <lootgroup name="myLootGroup">
+        <item name="foodCanChili"       count="1,3" prob="0.5"/>
+        <item name="resourceScrapIron"  count="5,15" prob="0.8"/>
+        <item name="ammo9mmBulletBall"  count="10,30" prob="0.3"/>
+      </lootgroup>
+    </append>
+
+  Add an item to an existing loot group:
+    <append xpath="/lootcontainers/lootgroup[@name='groupMedicalSupplies']">
+      <item name="medicalFirstAidKit" count="1" prob="0.2"/>
+    </append>
+
+  Modify probability of item in existing group:
+    <set xpath="/lootcontainers/lootgroup[@name='groupMedicalSupplies']/item[@name='medicalFirstAidKit']/@prob">0.5</set>
+-->
+<lootcontainers>
+
+</lootcontainers>
