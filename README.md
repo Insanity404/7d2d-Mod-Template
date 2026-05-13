@@ -7,13 +7,14 @@
 
 # 🧟 7 Days to Die Mod Template
 
-**A smooth, VS Code–powered development environment for building XML mods.**
 
-Validate your patches, deploy to a local dev server, and iterate fast -
-without ever leaving your editor.
+**A smooth, VS Code–powered development environment for building XML and DLL (Harmony) mods.**
+
+Validate your XML patches, build and deploy C# Harmony DLLs, and iterate fast—all from your editor.
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-Ready-007ACC?logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
 [![7 Days to Die](https://img.shields.io/badge/7%20Days%20to%20Die-XML%20Mods-b22222)](https://7daystodie.com/)
+[![7 Days to Die](https://img.shields.io/badge/7%20Days%20to%20Die-Haramony%20Mods-gold)](https://7daystodie.com/)
 
 </div>
 
@@ -21,14 +22,16 @@ without ever leaving your editor.
 
 ## 🪓 What Is This?
 
-This template gives you a **professional modding workspace** for 7 Days to Die XML mods:
+
+This template gives you a **professional modding workspace** for 7 Days to Die XML and C# Harmony DLL mods:
 
 - 🔍 **4-phase XML validation** catches syntax errors, bad XPaths, and vanilla schema mismatches before you ever launch the game
-- ⚡ **One-key workflow** - press **F5** to validate, deploy, and start your dev server
+- ⚡ **One-key workflow** - press **F5** to validate, build DLL (if present), deploy, and start your dev server
+- 🧩 **DLL mod support**: Write C# Harmony patches in `Scripts/`, build to `Plugins/`, and deploy with your XML
 - 📋 **Example XML files** for most moddable config, each with commented patch examples
-- 📦 **One-command publishing** packages your mod into a release-ready ZIP
+- 📦 **One-command publishing** packages your mod—including DLLs—into a release-ready ZIP
 
-No more hunting through logs to find a typo in an XPath. No more manual file copying. Just edit XML and test.
+No more hunting through logs to find a typo in an XPath. No more manual file copying. Just edit, build, and test.
 
 ---
 
@@ -74,13 +77,19 @@ Edit XML files in `src/Mods/<YourMod>/Config/`. Every file has inline
 commented examples to get you started. Vanilla reference files live in
 `server/Data/Config/` once your dev server is set up.
 
+
 ### 4. 🎮 Build, deploy, and run
+
+You can build XML-only, DLL-only, or both:
 
 | Action | How |
 |--------|-----|
-| **Validate + deploy + launch server** | **F5** in VS Code |
-| **Validate + deploy only** | **Ctrl+Shift+B** |
-| **Terminal** | `.\scripts\start-server.ps1 -Build` |
+| **Validate + build DLL + deploy + launch server** | **F5** in VS Code |
+| **Validate + build DLL + deploy only** | **Ctrl+Shift+B** |
+| **Build XML only** | `./scripts/build.ps1 -BuildType xml` |
+| **Build DLL only** | `./scripts/build.ps1 -BuildType csharp` |
+| **Build both (default)** | `./scripts/build.ps1 -BuildType all` |
+| **Terminal** | `./scripts/start-server.ps1 -Build` |
 
 ---
 
@@ -101,7 +110,12 @@ commented examples to get you started. Vanilla reference files live in
 ├── 📁 src/Mods/MyMod/           ← Rename to match your modName
 │   ├── ModInfo.xml              ← Mod metadata (required by the game)
 │   ├── README.md                ← Mod-specific best practices
-│   └── 📁 Config/
+│   ├── 📁 Config/               ← XML patches
+│   ├── 📁 Scripts/              ← C# Harmony source (optional, not deployed)
+│   │   ├── MyMod.csproj         ← .NET 4.8 DLL project (portable, no user paths)
+│   │   └── Entry.cs, ...        ← Your Harmony patches
+│   ├── 📁 Resources/            ← Unity asset bundles (if any)
+│   └── 📁 Textures/             ← Game texture overrides (if any)
 │       ├── items.xml            ← Items, weapons, tools
 │       ├── blocks.xml           ← Blocks and terrain
 │       ├── buffs.xml            ← Status effects
@@ -125,6 +139,9 @@ commented examples to get you started. Vanilla reference files live in
 ├── server/                      ← Dev server (gitignored - setup-server.ps1)
 ├── data/                        ← Save games and logs (gitignored)
 └── releases/                    ← Distribution ZIPs (gitignored - publish.ps1)
+## 🛡️ Portability
+
+The compiled DLL is placed at your mod's root and deployed directly alongside Config/ and other mod assets.
 ```
 
 ---

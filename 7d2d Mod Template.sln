@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mods", "Mods", "{6CBF7830-87DE-CF53-6AE2-32113C1FBCA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyMod", "MyMod", "{6F46A734-FFD1-9F85-F409-CE6541A35451}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{1C0A9CC9-80FD-F905-4E6B-C2A6E321E1B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMod", "src\Mods\MyMod\Scripts\MyMod.csproj", "{50377C51-2D8D-30DB-73B4-35325807B0A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50377C51-2D8D-30DB-73B4-35325807B0A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50377C51-2D8D-30DB-73B4-35325807B0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50377C51-2D8D-30DB-73B4-35325807B0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50377C51-2D8D-30DB-73B4-35325807B0A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6CBF7830-87DE-CF53-6AE2-32113C1FBCA9} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{6F46A734-FFD1-9F85-F409-CE6541A35451} = {6CBF7830-87DE-CF53-6AE2-32113C1FBCA9}
+		{1C0A9CC9-80FD-F905-4E6B-C2A6E321E1B4} = {6F46A734-FFD1-9F85-F409-CE6541A35451}
+		{50377C51-2D8D-30DB-73B4-35325807B0A8} = {1C0A9CC9-80FD-F905-4E6B-C2A6E321E1B4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87BE5E96-FB31-49AA-B9BA-EB69883615AD}
+	EndGlobalSection
+EndGlobal

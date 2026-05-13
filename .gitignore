@@ -19,9 +19,52 @@
 *.userosscache
 *.sln.docstates
 
+
 # .NET build output
 /bin/
 /obj/
+**/bin/
+**/obj/
+src/Mods/**/*.dll
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+*.log
+*.vspscc
+*.vssscc
+*.pdb
+*.dbmdl
+*.dbmdl
+*.dgspec.json
+*.nuget.cache
+*.nuget.g.props
+*.nuget.g.targets
+*.assets.json
+*.csproj.nuget.dgspec.json
+*.csproj.FileListAbsolute.txt
+*.csprojAssemblyReference.cache
+*.tlog
+*.lastcodeanalysissucceeded
+*.lastbuildstate
+*.sdf
+*.opensdf
+*.sbr
+*.scc
+*.vssscc
+*.vspscc
+*.vssscc
+*.userprefs
+*.sln.ide
+*.sln.iml
+*.sln.cache
+*.sln.docstates
+*.sln.ide
+*.sln.iml
+*.sln.cache
+*.sln.docstates
 
 # VS Code - keep tasks/launch/extensions committed, ignore machine-specific settings
 .vscode/settings.json

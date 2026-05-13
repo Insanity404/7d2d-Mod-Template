@@ -26,6 +26,8 @@
 #>
 param(
     [string]$ModName       = "",
+    [ValidateSet("all", "xml", "csharp")]
+    [string]$BuildType     = "all",
     [switch]$ValidateOnly,
     [switch]$NoClear,
     [switch]$SkipValidation
@@ -78,15 +80,33 @@ if ($modsToBuild.Count -eq 0) {
 
 Write-Host ""
 Write-Host "7D2D Mod Build" -ForegroundColor White
+
 Write-Host "  Mods:   $($modsToBuild -join ', ')"
 Write-Host "  Source: $SourceDir"
+Write-Host "  Build:  $BuildType"
 if (-not $ValidateOnly) {
     Write-Host "  Deploy: $DestDir"
 }
 
-# === Validate ================================================================
 
-if (-not $SkipValidation) {
+# === Build C# DLL if requested ==============================================
+if ($BuildType -in @("all", "csharp")) {
+    foreach ($mod in $modsToBuild) {
+        $csprojPath = Join-Path $SourceDir "$mod\Scripts\$mod.csproj"
+        if (Test-Path $csprojPath) {
+            Write-Host ""
+            Write-Host "--- Building C# DLL for $mod ---" -ForegroundColor Cyan
+            & dotnet build $csprojPath -c Release
+            if ($LASTEXITCODE -ne 0) {
+                Write-Fail "DLL compilation failed for $mod"
+                exit 1
+            }
+        }
+    }
+}
+
+# === Validate XML if requested ==============================================
+if ($BuildType -in @("all", "xml") -and -not $SkipValidation) {
     Write-Host ""
     Write-Host "--- Validating XML ---" -ForegroundColor Cyan
 
@@ -179,16 +199,36 @@ foreach ($mod in $modsToBuild) {
         Remove-Item $modDest -Recurse -Force
     }
 
-    $files = Get-ChildItem -Path $modSrc -Recurse -File
-    foreach ($file in $files) {
-        $relative   = $file.FullName.Substring($modSrc.Length + 1)
-        $destFile   = Join-Path $modDest $relative
-        $destParent = Split-Path $destFile -Parent
-        New-Item -ItemType Directory -Path $destParent -Force | Out-Null
-        Copy-Item $file.FullName $destFile -Force
+    New-Item -ItemType Directory -Path $modDest -Force | Out-Null
+
+
+
+    # Only deploy: ModInfo.xml, Config/, Resources/, Textures/, *.dll (root), README.md (if present)
+    $deployList = @()
+    $modInfoPath = Join-Path $modSrc "ModInfo.xml"
+    if (Test-Path $modInfoPath) { $deployList += $modInfoPath }
+    $configPath = Join-Path $modSrc "Config"
+    if (Test-Path $configPath) { $deployList += $configPath }
+    $resourcesPath = Join-Path $modSrc "Resources"
+    if (Test-Path $resourcesPath) { $deployList += $resourcesPath }
+    $texturesPath = Join-Path $modSrc "Textures"
+    if (Test-Path $texturesPath) { $deployList += $texturesPath }
+    $dlls = @(Get-ChildItem -Path $modSrc -Filter "*.dll" -File -ErrorAction SilentlyContinue)
+    if ($dlls.Count -gt 0) { $deployList += @($dlls | ForEach-Object { $_.FullName }) }
+    $readmePath = Join-Path $modSrc "README.md"
+    if (Test-Path $readmePath) { $deployList += $readmePath }
+
+    foreach ($item in $deployList) {
+        $dest = Join-Path $modDest ([System.IO.Path]::GetFileName($item))
+        if (Test-Path $item -PathType Container) {
+            Copy-Item $item $dest -Recurse -Force
+        } else {
+            Copy-Item $item $dest -Force
+        }
     }
 
-    Write-OK "Deployed $($files.Count) file(s) -> $modDest"
+    $deployedFilesCount = (Get-ChildItem -Path $modDest -Recurse -File -ErrorAction SilentlyContinue).Count
+    Write-OK "Deployed $deployedFilesCount file(s) -> $modDest"
     $deployedCount++
 }
 

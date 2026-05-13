@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MyMod</RootNamespace>
+    <AssemblyName>MyMod</AssemblyName>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Reference to 7 Days to Die game assembly (relative, portable) -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(MSBuildProjectDirectory)\..\..\..\..\server\7DaysToDieServer_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(MSBuildProjectDirectory)\..\..\..\..\server\7DaysToDieServer_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Reference to Harmony library (relative, portable) -->
+    <Reference Include="0Harmony">
+      <HintPath>$(MSBuildProjectDirectory)\..\..\..\..\server\Mods\0_TFP_Harmony\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Post-build: copy DLL to mod root (relative, portable) -->
+  <Target Name="CopyToModRoot" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(MSBuildProjectDirectory)\\.." SkipUnchangedFiles="true" />
+  </Target>
+</Project>

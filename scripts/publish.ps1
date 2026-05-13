@@ -130,7 +130,32 @@ foreach ($mod in $modsToPack) {
     if (Test-Path $stagingDir) { Remove-Item $stagingDir -Recurse -Force }
     New-Item -ItemType Directory -Path $stagingDir | Out-Null
 
-    Copy-Item -Path $modPath -Destination (Join-Path $stagingDir $mod) -Recurse
+
+    # Only include: ModInfo.xml, Config/, Resources/, Textures/, *.dll (root), README.md (if present)
+    $deployList = @()
+    $modInfoPath = Join-Path $modPath "ModInfo.xml"
+    if (Test-Path $modInfoPath) { $deployList += $modInfoPath }
+    $configPath = Join-Path $modPath "Config"
+    if (Test-Path $configPath) { $deployList += $configPath }
+    $resourcesPath = Join-Path $modPath "Resources"
+    if (Test-Path $resourcesPath) { $deployList += $resourcesPath }
+    $texturesPath = Join-Path $modPath "Textures"
+    if (Test-Path $texturesPath) { $deployList += $texturesPath }
+    $dlls = @(Get-ChildItem -Path $modPath -Filter "*.dll" -File -ErrorAction SilentlyContinue)
+    if ($dlls.Count -gt 0) { $deployList += @($dlls | ForEach-Object { $_.FullName }) }
+    $readmePath = Join-Path $modPath "README.md"
+    if (Test-Path $readmePath) { $deployList += $readmePath }
+
+    $modStaging = Join-Path $stagingDir $mod
+    New-Item -ItemType Directory -Path $modStaging -Force | Out-Null
+    foreach ($item in $deployList) {
+        $dest = Join-Path $modStaging ([System.IO.Path]::GetFileName($item))
+        if (Test-Path $item -PathType Container) {
+            Copy-Item $item $dest -Recurse -Force
+        } else {
+            Copy-Item $item $dest -Force
+        }
+    }
 
     if ($IncludeServerConfig) {
         $devConfig = Join-Path $ServerDir "serverconfig_dev.xml"
