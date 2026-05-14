@@ -14,7 +14,7 @@ Validate your XML patches, build and deploy C# Harmony DLLs, and iterate fast—
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-Ready-007ACC?logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)
 [![7 Days to Die](https://img.shields.io/badge/7%20Days%20to%20Die-XML%20Mods-b22222)](https://7daystodie.com/)
-[![7 Days to Die](https://img.shields.io/badge/7%20Days%20to%20Die-Haramony%20Mods-gold)](https://7daystodie.com/)
+[![7 Days to Die](https://img.shields.io/badge/7%20Days%20to%20Die-Harmony%20Mods-gold)](https://7daystodie.com/)
 
 </div>
 
