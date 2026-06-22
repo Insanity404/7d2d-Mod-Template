@@ -15,6 +15,15 @@
     Download the dedicated server via SteamCMD (App ID 294420).
     SteamCMD must be available on PATH or in common install locations.
 
+.PARAMETER Experimental
+    Shortcut for -Branch latest_experimental. Downloads the current
+    experimental build (e.g. V3.0 "Dead Hot Summer") instead of stable.
+    Only applies to SteamCMD downloads (-UseSteamCmd).
+
+.PARAMETER Branch
+    SteamCMD beta branch to install (e.g. "latest_experimental"). Leave
+    empty for the default public/stable branch. Only applies to -UseSteamCmd.
+
 .PARAMETER Force
     Overwrite an existing server/ directory.
 
@@ -26,11 +35,15 @@
     .\scripts\setup-server.ps1
     .\scripts\setup-server.ps1 -SourcePath "D:\SteamLibrary\steamapps\common\7 Days to Die"
     .\scripts\setup-server.ps1 -UseSteamCmd
+    .\scripts\setup-server.ps1 -UseSteamCmd -Experimental
+    .\scripts\setup-server.ps1 -UseSteamCmd -Branch latest_experimental
     .\scripts\setup-server.ps1 -ConfigOnly
 #>
 param(
     [string]$SourcePath = "",
     [switch]$UseSteamCmd,
+    [switch]$Experimental,
+    [string]$Branch = "",
     [switch]$Force,
     [switch]$ConfigOnly
 )
@@ -51,6 +64,9 @@ if (-not (Test-Path $ConfigPath)) {
 $Config    = Get-Content $ConfigPath | ConvertFrom-Json
 $ModName   = $Config.modName
 $ServerCfg = $Config.server
+
+# -Experimental is a friendly shortcut for the experimental beta branch
+if ($Experimental -and -not $Branch) { $Branch = "latest_experimental" }
 
 $ServerDir  = Join-Path $ProjectRoot "server"
 $DataDir    = Join-Path $ProjectRoot "data"
@@ -83,6 +99,13 @@ if (-not $ConfigOnly) {
         Write-Host "Force flag set - overwriting existing server..." -ForegroundColor Yellow
     }
 
+    if ($Branch -and -not $UseSteamCmd) {
+        Write-Host ""
+        Write-Host "Note: -Branch/-Experimental only applies to SteamCMD downloads." -ForegroundColor Yellow
+        Write-Host "      A copied local install uses whatever branch Steam has set for it." -ForegroundColor Yellow
+        Write-Host "      Set the experimental beta in Steam, or re-run with -UseSteamCmd -Experimental." -ForegroundColor Yellow
+    }
+
     if ($UseSteamCmd) {
         Write-Host ""
         Write-Host "=== Downloading 7D2D Dedicated Server via SteamCMD ===" -ForegroundColor Cyan
@@ -112,13 +135,26 @@ if (-not $ConfigOnly) {
         }
 
         Write-Host "  SteamCMD: $steamCmdPath" -ForegroundColor DarkGray
+        if ($Branch) {
+            Write-Host "  Branch:   $Branch (experimental)" -ForegroundColor Yellow
+        } else {
+            Write-Host "  Branch:   public (stable)" -ForegroundColor DarkGray
+        }
 
         New-Item -ItemType Directory -Path $ServerDir -Force | Out-Null
-        & $steamCmdPath `
-            +force_install_dir "$ServerDir" `
-            +login anonymous `
-            +app_update 294420 validate `
-            +quit
+
+        # +app_info_update 1 forces a metadata refresh - without it SteamCMD can
+        # report "Success, No Error" while leaving the previous build in place.
+        $steamArgs = @(
+            "+force_install_dir", "$ServerDir",
+            "+login", "anonymous",
+            "+app_info_update", "1",
+            "+app_update", "294420"
+        )
+        if ($Branch) { $steamArgs += @("-beta", $Branch) }
+        $steamArgs += @("validate", "+quit")
+
+        & $steamCmdPath @steamArgs
 
         if ($LASTEXITCODE -ne 0) {
             Write-Error "SteamCMD failed with exit code $LASTEXITCODE"

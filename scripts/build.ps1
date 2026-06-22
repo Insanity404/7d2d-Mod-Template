@@ -30,7 +30,9 @@ param(
     [string]$BuildType     = "all",
     [switch]$ValidateOnly,
     [switch]$NoClear,
-    [switch]$SkipValidation
+    [switch]$SkipValidation,
+    [switch]$Strict,
+    [switch]$DllScan
 )
 
 Set-StrictMode -Version Latest
@@ -48,7 +50,7 @@ if (-not (Test-Path $ConfigPath)) {
 
 $Config = Get-Content $ConfigPath | ConvertFrom-Json
 
-if (-not $ModName) { $ModName = $Config.modName }
+if (-not $ModName) { $ModName = "all" }
 
 $SourceDir = Join-Path $ProjectRoot "src\Mods"
 $ServerDir = Join-Path $ProjectRoot "server"
@@ -139,7 +141,10 @@ if ($BuildType -in @("all", "xml") -and -not $SkipValidation) {
 
         # Run enhanced validator if available
         if (Test-Path $validateScript) {
-            & $validateScript -ModPath $modSrc -ServerDir $ServerDir -Quiet
+            $validateArgs = @{ ModPath = $modSrc; ServerDir = $ServerDir; Quiet = $true }
+            if ($Strict)  { $validateArgs.Strict  = $true }
+            if ($DllScan) { $validateArgs.DllScan = $true }
+            & $validateScript @validateArgs
             if ($LASTEXITCODE -ne 0) { $script:ErrorCount++ }
         }
     }

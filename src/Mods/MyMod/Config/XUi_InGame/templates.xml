@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  templates.xml - Reusable UI template additions and modifications
+  Vanilla reference: server/Data/Config/XUi_InGame/templates.xml
+
+  NOTE: In V3.0 "Dead Hot Summer" this file was renamed from controls.xml to
+  templates.xml (and the XUi/ folder to XUi_InGame/) to avoid confusion with
+  XUi controller classes. The root element and xpaths are now /templates.
+
+  Add a new reusable template:
+    <append xpath="/templates">
+      <my_custom_button>
+        <rect height="40" style="press, hover" controller="ButtonFromXml">
+          <sprite depth="2" name="background" color="[darkGrey]" type="sliced" />
+          <label depth="3" name="label" pos="0,-20" height="28" font_size="26"
+                 justify="center" pivot="center" width="100%" />
+        </rect>
+      </my_custom_button>
+    </append>
+
+  Modify a property on an existing template:
+    <set xpath="/templates/recipe_entry/rect/@height">50</set>
+
+  Append a child element to an existing template:
+    <append xpath="/templates/recipe_entry/rect">
+      <sprite name="myBadge" sprite="ui_game_symbol_new" size="16,16" pos="2,-2" foregroundlayer="true" />
+    </append>
+-->
+<templates>
+
+</templates>

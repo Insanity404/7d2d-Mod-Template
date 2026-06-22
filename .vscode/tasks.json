@@ -20,7 +20,7 @@
       "label": "Build (Validate + Deploy)",
       "type": "shell",
       "command": "powershell.exe",
-      "args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\scripts\\build.ps1"],
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\scripts\\build.ps1", "-ModName", "all"],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -50,7 +50,8 @@
       "command": "powershell.exe",
       "args": [
         "-ExecutionPolicy", "Bypass",
-        "-File", "${workspaceFolder}\\scripts\\validate-xml.ps1"
+        "-File", "${workspaceFolder}\\scripts\\build.ps1",
+        "-ValidateOnly", "-ModName", "all"
       ],
       "group": "test",
       "presentation": {
@@ -68,9 +69,8 @@
       "command": "powershell.exe",
       "args": [
         "-ExecutionPolicy", "Bypass",
-        "-File", "${workspaceFolder}\\scripts\\validate-xml.ps1",
-        "-Strict",
-        "-DllScan"
+        "-File", "${workspaceFolder}\\scripts\\build.ps1",
+        "-ValidateOnly", "-ModName", "all", "-Strict", "-DllScan"
       ],
       "group": "test",
       "presentation": {
@@ -131,7 +131,7 @@
       "label": "Publish (Create Release ZIP)",
       "type": "shell",
       "command": "powershell.exe",
-      "args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\scripts\\publish.ps1"],
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\scripts\\publish.ps1", "-ModName", "all"],
       "group": "none",
       "presentation": {
         "echo": true,

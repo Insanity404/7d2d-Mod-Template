@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   windows.xml - UI window additions and modifications
-  Vanilla reference: server/Data/Config/XUi/windows.xml
+  Vanilla reference: server/Data/Config/XUi_InGame/windows.xml
 
   Add a new window:
     <append xpath="/windows">

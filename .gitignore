@@ -7,6 +7,11 @@
 # Distribution packages
 /releases/
 
+# Mods - only the MyMod template ships with the repo.
+# Your own mods stay local so they're never committed to the template.
+/src/Mods/*
+!/src/Mods/MyMod/
+
 # Personal notes
 /notes/
 /scratch/

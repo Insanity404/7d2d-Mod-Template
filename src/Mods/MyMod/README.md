@@ -122,9 +122,9 @@ Then reference the key in XML:
 | `vehicles.xml` | `Data/Config/vehicles.xml` | Vehicle stats |
 | `weathersurvival.xml` | `Data/Config/weathersurvival.xml` | Weather and temperature |
 | `misc.xml` | `Data/Config/misc.xml` | Game settings and tuning |
-| `XUi/controls.xml` | `Data/Config/XUi/controls.xml` | Reusable UI control templates |
-| `XUi/windows.xml` | `Data/Config/XUi/windows.xml` | UI window layout |
-| `XUi_Common/styles.xml` | `Data/Config/XUi_Common/styles.xml` | UI styles and colors |
+| `XUi_InGame/templates.xml` | `Data/Config/XUi_InGame/templates.xml` | Reusable UI templates (was `XUi/controls.xml` on stable ≤2.6) |
+| `XUi_InGame/windows.xml` | `Data/Config/XUi_InGame/windows.xml` | In-game UI window layout |
+| `XUi_Common/styles.xml` | `Data/Config/XUi_Common/styles.xml` | Shared UI styles and colors |
 | `Localization.txt` | `Data/Config/Localization.txt` | Display strings |
 
 Delete any files you are not using - empty XML files are harmless but add noise.

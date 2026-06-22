@@ -42,7 +42,7 @@ $SourceDir   = Join-Path $ProjectRoot "src\Mods"
 $ReleasesDir = Join-Path $ProjectRoot "releases"
 $ServerDir   = Join-Path $ProjectRoot "server"
 
-if (-not $ModName) { $ModName = $Config.modName }
+if (-not $ModName) { $ModName = "all" }
 if (-not $Version) { $Version = $Config.modVersion }
 
 $modsToPack = if ($ModName -eq "all") {
