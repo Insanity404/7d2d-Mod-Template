@@ -3,6 +3,7 @@
     "ms-vscode.powershell",
     "redhat.vscode-xml",
     "mhutchie.git-graph",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "mechatroner.rainbow-csv"
   ]
 }

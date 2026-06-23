@@ -69,8 +69,8 @@ function Write-Fail([string]$msg) { Write-Host "  [FAIL] $msg" -ForegroundColor 
 
 $modsToBuild = @()
 if ($ModName -eq "all") {
-    $modsToBuild = Get-ChildItem -Path $SourceDir -Directory -ErrorAction SilentlyContinue |
-        Select-Object -ExpandProperty Name
+    $modsToBuild = @(Get-ChildItem -Path $SourceDir -Directory -ErrorAction SilentlyContinue |
+        Select-Object -ExpandProperty Name)
 } else {
     $modsToBuild = @($ModName)
 }
